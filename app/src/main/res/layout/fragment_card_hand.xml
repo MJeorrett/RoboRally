@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:orientation="horizontal"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content">
+
+        <include
+            android:id="@+id/fragment_card_hand_card_1"
+            layout="@layout/view_movement_card"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+        <include
+            android:id="@+id/fragment_card_hand_card_2"
+            layout="@layout/view_movement_card"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+        <include
+            android:id="@+id/fragment_card_hand_card_3"
+            layout="@layout/view_movement_card"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+        <include
+            android:id="@+id/fragment_card_hand_card_4"
+            layout="@layout/view_movement_card"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+        <include
+            android:id="@+id/fragment_card_hand_card_5"
+            layout="@layout/view_movement_card"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="horizontal"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+
+        <include
+            android:id="@+id/fragment_card_hand_card_6"
+            layout="@layout/view_movement_card"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+        <include
+            android:id="@+id/fragment_card_hand_card_7"
+            layout="@layout/view_movement_card"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+        <include
+            android:id="@+id/fragment_card_hand_card_8"
+            layout="@layout/view_movement_card"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+        <include
+            android:id="@+id/fragment_card_hand_card_9"
+            layout="@layout/view_movement_card"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+        <Button
+            android:id="@+id/fragment_card_hand_deal_button"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+</LinearLayout>

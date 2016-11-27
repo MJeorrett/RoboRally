@@ -19,6 +19,8 @@ public class TileMapView extends ViewGroup {
     private static final int TILE_COUNT = 12; // number of tiles wide / high
     private static final float MAX_ZOOM_SCALE = 5.0f;
 
+    private PlayerRobot mPlayerRobot;
+
     private int mActivePointerId = INVALID_POINTER_ID;
     private ScaleGestureDetector mScaleDetector;
     private GestureDetector mGestureDetector;
@@ -31,9 +33,9 @@ public class TileMapView extends ViewGroup {
     private float mLastTouchX;
     private float mLastTouchY;
 
-    public TileMapView( Context context, AttributeSet attributeSet ) {
+    public TileMapView( Context context ) {
 
-        super( context, attributeSet );
+        super( context );
 
         mScaleDetector = new ScaleGestureDetector( context, new ScaleListener() );
         mGestureDetector = new GestureDetector( context, new GestureListener() );
@@ -48,6 +50,9 @@ public class TileMapView extends ViewGroup {
                 addView( newTile );
             }
         }
+
+        mPlayerRobot = new PlayerRobot( context );
+        addView( mPlayerRobot );
     }
 
     @Override
@@ -163,12 +168,20 @@ public class TileMapView extends ViewGroup {
 
                 final View child = getChildAt( ( iy * TILE_COUNT ) + ix );
                 int childLeft = ix * mTileSize;
-                int childRight = ( ix * mTileSize) + mTileSize;
+                int childRight = childLeft + mTileSize;
                 int childTop = iy * mTileSize;
-                int childBottom = ( iy * mTileSize) + mTileSize;
+                int childBottom = childTop + mTileSize;
+
                 child.layout( childLeft + posX, childTop + posY, childRight + posX, childBottom + posY );
             }
         }
+
+        int robotLeft = mPlayerRobot.getRow() * mTileSize;
+        int robotRight = robotLeft + mTileSize;
+        int robotTop = mPlayerRobot.getColumn() * mTileSize;
+        int robotBottom = robotTop + mTileSize;
+
+        mPlayerRobot.layout( robotLeft, robotTop, robotRight, robotBottom );
     }
 
     private void updateChildTranslation() {
@@ -186,6 +199,11 @@ public class TileMapView extends ViewGroup {
                 child.setScaleY( mScaleFactor );
             }
         }
+
+        mPlayerRobot.setTranslationX( mPosX + (mPlayerRobot.getRow() * sizeIncrease) );
+        mPlayerRobot.setTranslationY( mPosY + (mPlayerRobot.getColumn() * sizeIncrease) );
+        mPlayerRobot.setScaleX( mScaleFactor );
+        mPlayerRobot.setScaleY( mScaleFactor );
     }
 
     private void resetTranslations() {
