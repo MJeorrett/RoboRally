@@ -9,7 +9,7 @@ import java.util.Random;
  * Created by user on 27/11/2016.
  */
 
-public enum CardValue {
+public enum MovementCardValue {
 
     ROTATE_LEFT( "Rotate", "Left" ),
     ROTATE_RIGHT( "Rotate", "Right" ),
@@ -20,7 +20,7 @@ public enum CardValue {
     BACK_UP( "Move", "Back");
 
 
-    private static final List<CardValue> VALUES = Collections.unmodifiableList(
+    private static final List<MovementCardValue> VALUES = Collections.unmodifiableList(
             Arrays.asList( values() )
     );
     private static final int SIZE = VALUES.size();
@@ -29,7 +29,7 @@ public enum CardValue {
     private String mDirection;
     private String mQuantity;
 
-    CardValue(String direction, String amount ) {
+    MovementCardValue(String direction, String amount ) {
 
         mDirection = direction;
         mQuantity = amount;
@@ -45,7 +45,7 @@ public enum CardValue {
         return mQuantity;
     }
 
-    public static CardValue randomCardValue()  {
+    public static MovementCardValue randomCardValue()  {
 
         return VALUES.get( RANDOM.nextInt( SIZE ) );
     }

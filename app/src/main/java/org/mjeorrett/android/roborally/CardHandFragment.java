@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 
 /**
  * Created by user on 27/11/2016.
@@ -15,7 +14,7 @@ import android.widget.TextView;
 
 public class CardHandFragment extends Fragment implements View.OnClickListener {
 
-    private View[] mCardViews;
+    private MovementCard[] mCards;
     private Button mDealButton;
 
     @Nullable
@@ -27,17 +26,17 @@ public class CardHandFragment extends Fragment implements View.OnClickListener {
 
         View view = inflater.inflate( R.layout.fragment_card_hand,container, false );
 
-        mCardViews = new View[9];
+        mCards = new MovementCard[9];
 
-        mCardViews[0] = view.findViewById( R.id.fragment_card_hand_card_1 );
-        mCardViews[1] = view.findViewById( R.id.fragment_card_hand_card_2 );
-        mCardViews[2] = view.findViewById( R.id.fragment_card_hand_card_3 );
-        mCardViews[3] = view.findViewById( R.id.fragment_card_hand_card_4 );
-        mCardViews[4] = view.findViewById( R.id.fragment_card_hand_card_5 );
-        mCardViews[5] = view.findViewById( R.id.fragment_card_hand_card_6 );
-        mCardViews[6] = view.findViewById( R.id.fragment_card_hand_card_7 );
-        mCardViews[7] = view.findViewById( R.id.fragment_card_hand_card_8 );
-        mCardViews[8] = view.findViewById( R.id.fragment_card_hand_card_9 );
+        mCards[0] = new MovementCard( view.findViewById( R.id.fragment_card_hand_card_1 ) );
+        mCards[1] = new MovementCard( view.findViewById( R.id.fragment_card_hand_card_2 ) );
+        mCards[2] = new MovementCard( view.findViewById( R.id.fragment_card_hand_card_3 ) );
+        mCards[3] = new MovementCard( view.findViewById( R.id.fragment_card_hand_card_4 ) );
+        mCards[4] = new MovementCard( view.findViewById( R.id.fragment_card_hand_card_5 ) );
+        mCards[5] = new MovementCard( view.findViewById( R.id.fragment_card_hand_card_6 ) );
+        mCards[6] = new MovementCard( view.findViewById( R.id.fragment_card_hand_card_7 ) );
+        mCards[7] = new MovementCard( view.findViewById( R.id.fragment_card_hand_card_8 ) );
+        mCards[8] = new MovementCard( view.findViewById( R.id.fragment_card_hand_card_9 ) );
 
         mDealButton = (Button) view.findViewById( R.id.fragment_card_hand_deal_button );
         mDealButton.setOnClickListener( this );
@@ -60,13 +59,9 @@ public class CardHandFragment extends Fragment implements View.OnClickListener {
 
         for ( int i = 0; i < 9; i++ ) {
 
-            final View card = mCardViews[i];
-            final TextView directionTextView = (TextView) card.findViewById( R.id.view_movement_card_direction_text_view );
-            final TextView quantityTextView = (TextView) card.findViewById( R.id.view_movement_card_quantity_text_view );
-            final CardValue cardValue = CardValue.randomCardValue();
-
-            directionTextView.setText( cardValue.getDirection() );
-            quantityTextView.setText( cardValue.getQuantity() );
+            final MovementCard card = mCards[i];
+            final MovementCardValue cardValue = MovementCardValue.randomCardValue();
+            card.setCardValue( cardValue );
         }
     }
 }
