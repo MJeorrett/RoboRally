@@ -6,15 +6,17 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 /**
  * Created by user on 27/11/2016.
  */
 
-public class CardHandFragment extends Fragment {
+public class CardHandFragment extends Fragment implements View.OnClickListener {
 
     private View[] mCardViews;
+    private Button mDealButton;
 
     @Nullable
     @Override
@@ -37,6 +39,25 @@ public class CardHandFragment extends Fragment {
         mCardViews[7] = view.findViewById( R.id.fragment_card_hand_card_8 );
         mCardViews[8] = view.findViewById( R.id.fragment_card_hand_card_9 );
 
+        mDealButton = (Button) view.findViewById( R.id.fragment_card_hand_deal_button );
+        mDealButton.setOnClickListener( this );
+
+        dealCards();
+
+        return view;
+    }
+
+    @Override
+    public void onClick(View view) {
+
+        if ( view.getId() == mDealButton.getId() ) {
+
+            dealCards();
+        }
+    }
+
+    private void dealCards() {
+
         for ( int i = 0; i < 9; i++ ) {
 
             final View card = mCardViews[i];
@@ -47,7 +68,5 @@ public class CardHandFragment extends Fragment {
             directionTextView.setText( cardValue.getDirection() );
             quantityTextView.setText( cardValue.getQuantity() );
         }
-
-        return view;
     }
 }
