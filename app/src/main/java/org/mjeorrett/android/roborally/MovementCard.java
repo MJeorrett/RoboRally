@@ -10,30 +10,33 @@ import android.widget.TextView;
 
 public class MovementCard {
 
-    private View mView;
+    private int mPlayOrder;
+    private TextView mPlayOrderTextView;
     private TextView mDirectionTextView;
     private TextView mQuantityTextView;
-    private MovementCardValue mCardValue;
-
-    public MovementCard( View view, @Nullable MovementCardValue cardValue ) {
-
-        mView = view;
-        mDirectionTextView = (TextView) mView.findViewById( R.id.view_movement_card_direction_text_view );
-        mQuantityTextView = (TextView) mView.findViewById( R.id.view_movement_card_quantity_text_view );
-
-        if ( cardValue != null ) this.setCardValue( cardValue );
-    }
 
     public MovementCard( View view ) {
 
-        this( view, null );
+        mPlayOrder = 0;
+        mPlayOrderTextView = (TextView) view.findViewById( R.id.view_movement_card_play_order_text_view );
+        mDirectionTextView = (TextView) view.findViewById( R.id.view_movement_card_direction_text_view );
+        mQuantityTextView = (TextView) view.findViewById( R.id.view_movement_card_quantity_text_view );
+
+        view.setOnClickListener( new View.OnClickListener() {
+
+            @Override
+            public void onClick( View view ) {
+
+                mPlayOrder += 1;
+                mPlayOrderTextView.setText( String.valueOf( mPlayOrder ) );
+            }
+        });
     }
 
     public void setCardValue( MovementCardValue cardValue ) {
 
-        mCardValue = cardValue;
-        mDirectionTextView.setText( mCardValue.getDirection() );
-        mQuantityTextView.setText( mCardValue.getQuantity() );
+        mDirectionTextView.setText( cardValue.getDirection() );
+        mQuantityTextView.setText( cardValue.getQuantity() );
     }
 
 }
