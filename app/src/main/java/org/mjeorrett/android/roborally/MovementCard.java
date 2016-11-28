@@ -1,6 +1,5 @@
 package org.mjeorrett.android.roborally;
 
-import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.TextView;
 
@@ -35,8 +34,8 @@ public class MovementCard {
 
     public void setCardValue( MovementCardValue cardValue ) {
 
-        mDirectionTextView.setText( cardValue.getDirection() );
-        mQuantityTextView.setText( cardValue.getQuantity() );
+        mDirectionTextView.setText( cardValue.getMovementQuantityString() );
+        mQuantityTextView.setText( cardValue.getRotationString() );
     }
 
 }
